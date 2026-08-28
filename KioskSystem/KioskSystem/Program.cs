@@ -13,11 +13,13 @@ class Program
         
         MaskPack maskPack = new MaskPack(1, "메디힐", 1000, ItemCategory.마스크팩, basicPromotion);
         MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 10000, ItemCategory.마스크팩, basicPromotion);
+        BodyLotion bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, basicPromotion);
         
         List<Item> itemList = new List<Item>();
         
         itemList.Add(maskPack);
         itemList.Add(maskPack2);
+        itemList.Add(bodyLotion);
         
         bool isStoreOpen = true;
         

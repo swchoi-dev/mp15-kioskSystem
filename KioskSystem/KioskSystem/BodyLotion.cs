@@ -1,12 +1,13 @@
 namespace KioskSystem;
 
-public class MaskPack : Item
+public class BodyLotion : Item
 {
-    public MaskPack(int id, string name, int price, ItemCategory itemCategory, Promotion promotion) :
+    public BodyLotion(int id, string name, int price, ItemCategory itemCategory, Promotion promotion) :
         base(id, name, price, itemCategory, promotion)
     {
+        
     }
-
+    
     public override int GetPromotionPrice()
     {
         int tempPrice = _price * _count;
