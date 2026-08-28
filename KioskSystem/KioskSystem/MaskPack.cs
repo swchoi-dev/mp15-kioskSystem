@@ -6,10 +6,5 @@ public class MaskPack : Item
         base(id, name, price, itemCategory, promotion)
     {
     }
-
-    public override int GetPromotionPrice()
-    {
-        int reulstPrice = Promotion.Price(_price, _count);
-        return reulstPrice;
-    }
+    
 }

@@ -31,5 +31,9 @@ public abstract class Item
         _count = 0;
     }
 
-    public abstract int GetPromotionPrice();
+    public virtual int GetPromotionPrice()
+    {
+        int reulstPrice = Promotion.Price(_price, _count);
+        return reulstPrice;
+    }
 }

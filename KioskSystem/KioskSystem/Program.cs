@@ -13,11 +13,12 @@ class Program
     
     static void Main(string[] args)
     {
-        BasicPromotion basicPromotion = new BasicPromotion();
+        BasicPromotion basicPromotion = new();
+        BigSalePromotion bigSalePromotion = new();
         
         MaskPack maskPack = new MaskPack(1, "메디힐", 1000, ItemCategory.마스크팩, basicPromotion);
-        MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 10000, ItemCategory.마스크팩, basicPromotion);
-        BodyLotion bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, basicPromotion);
+        MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 8000, ItemCategory.마스크팩, basicPromotion);
+        BodyLotion bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, bigSalePromotion);
         SunCream sunCream = new SunCream(4, "셀퓨전씨 선크림 SPF+++", 13000, ItemCategory.스킨케어, basicPromotion);
         Shampoo shampoo = new Shampoo(5, "탈모 방지 남성용 헤어샴푸", 30000, ItemCategory.헤어케어, basicPromotion);
         
