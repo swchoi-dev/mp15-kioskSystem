@@ -18,6 +18,7 @@ internal class Program
         EmptyPromotion emptyPromotion = new();
         PlusPromotion plusPromotion = new();
 
+
         var maskPack = new MaskPack(1, "메디힐 콜라겐 마스크 팩", 3000, ItemCategory.마스크팩, basicPromotion);
         var maskPackSet = new MaskPack(2, "메디힐 풀에너지 10개", 8000, ItemCategory.마스크팩, emptyPromotion);
         var bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, bigSalePromotion);
@@ -128,8 +129,7 @@ internal class Program
         var index = 1;
         foreach (var item in items)
         {
-            Console.WriteLine(
-                $"{index}. {item.Name} ({item.ItemCategory})  {item.Price}원  [{item.Promotion.Description}]");
+            Console.WriteLine($"{index}. {item.Name} ({item.ItemCategory})  {item.Price}원  [{item.Promotion.Description}]");
             index++;
         }
     }
@@ -139,12 +139,14 @@ internal class Program
         var hasItem = false;
         totalCartPrice = 0;
         foreach (var item in items)
+        {
             if (item.Count != 0)
             {
                 hasItem = true;
                 Console.WriteLine($"{item.Name} x{item.Count}  {item.GetPromotionPrice()}");
                 totalCartPrice += item.GetPromotionPrice();
             }
+        }
 
         if (hasItem) Console.WriteLine($"합계 :  {totalCartPrice}원");
     }
