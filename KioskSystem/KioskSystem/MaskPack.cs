@@ -9,8 +9,7 @@ public class MaskPack : Item
 
     public override int GetPromotionPrice()
     {
-        int tempPrice = _price * _count;
-        int reulstPrice = Promotion.Price(tempPrice, _count);
+        int reulstPrice = Promotion.Price(_price, _count);
         return reulstPrice;
     }
 }

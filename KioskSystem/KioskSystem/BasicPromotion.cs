@@ -13,12 +13,15 @@ public class BasicPromotion : Promotion
 
     public override int Price(int price, int count)
     {
-        int result = price;
-        if (count >= DISCOUNT_CONDITION)
+        int result = price * count;
+        if (count < DISCOUNT_CONDITION)
         {
-            int discount = price / DISCOUNT_RATE;
-            result -= discount;
+            return result;
         }
+        
+        int discount = result / DISCOUNT_RATE;
+        result -= discount;
+        
         return result;
     }
 }
