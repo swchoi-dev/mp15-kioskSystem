@@ -7,7 +7,9 @@ class Program
     private const string STORE_NAME = "올리브영 천호점";
     private const int MAX_MENU_COUNT = 5;
 
-    static private int TOTAL_CART_PRICE = 0;
+    static private int totalCartPrice = 0;
+    static private int totalOderCount = 0;
+    static private int totalProfit = 0;
     
     static void Main(string[] args)
     {
@@ -77,25 +79,32 @@ class Program
             item.Count = 0;
         }
 
-        TOTAL_CART_PRICE = 0;
+        totalCartPrice = 0;
     }
 
     static void PayShoppingCart()
     {
-        if (TOTAL_CART_PRICE == 0)
+        if (totalCartPrice == 0)
         {
             Console.WriteLine($"결제할 항목이 없습니다.");
             return;
         }
-        Console.WriteLine($"합계 금액 :  {TOTAL_CART_PRICE}");
-        int inputMoney = ConsoleInput.ReadIntInRange("받은 금액 : ", TOTAL_CART_PRICE, Int32.MaxValue);
-        int returnMoney = inputMoney - TOTAL_CART_PRICE;
+        Console.WriteLine($"합계 금액 :  {totalCartPrice}");
+        int inputMoney = ConsoleInput.ReadIntInRange("받은 금액 : ", totalCartPrice, Int32.MaxValue);
+        int returnMoney = inputMoney - totalCartPrice;
         Console.WriteLine($"반환 금액 :  {returnMoney}");
+
+        totalOderCount++;
+        totalProfit += totalCartPrice;
     }
 
     static void CloseStore()
     {
+        Console.WriteLine("====================================");
         Console.WriteLine("영업 종료");
+        Console.WriteLine($"총 주문 :  {totalOderCount}건");
+        Console.WriteLine($"총 매출 :  {totalProfit}원");
+        Console.WriteLine("====================================");
     }
 
     static void PrintKioskMain(List<Item> items)
@@ -124,20 +133,20 @@ class Program
     static void PrintShoppingCart(List<Item> items)
     {
         bool hasItem = false;
-        
+        totalCartPrice = 0;
         foreach (Item item in items)
         {
             if (item.Count != 0)
             {
                 hasItem = true;
                 Console.WriteLine($"{item.Name} x{item.Count}  {item.GetPromotionPrice()}");
-                TOTAL_CART_PRICE += item.GetPromotionPrice();
+                totalCartPrice += item.GetPromotionPrice();
             }
         }
 
         if (hasItem)
         {
-            Console.WriteLine($"합계 :  {TOTAL_CART_PRICE}원");
+            Console.WriteLine($"합계 :  {totalCartPrice}원");
         }
     }
 }
