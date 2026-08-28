@@ -4,6 +4,7 @@ using KioskSystem;
 
 class Program
 {
+    private const string STORE_NAME = "올리브영 천호점";
     static void Main(string[] args)
     {
         bool isStoreOpen = true;
@@ -11,6 +12,8 @@ class Program
         {
             Console.Clear();
 
+            PrintKioskMain();
+            
             int userInput = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
             switch (userInput)
             {
@@ -55,5 +58,19 @@ class Program
     static void CloseStore()
     {
         Console.WriteLine("영업 종료");
+    }
+
+    static void PrintKioskMain()
+    {
+        Console.WriteLine("====================================");
+        Console.WriteLine($"         {STORE_NAME}        ");
+        Console.WriteLine("====================================");
+        Console.WriteLine("[상품목록]");
+        // PrintItemList()
+        Console.WriteLine("------------------------------------");
+        Console.WriteLine("[장바구니]");
+        // PrintShoppingCart()
+        Console.WriteLine("------------------------------------");
+        Console.WriteLine("1. 담기   2. 전체 비우기   3. 결제   4. 영업 종료");
     }
 }
