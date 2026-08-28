@@ -5,7 +5,7 @@ using KioskSystem;
 class Program
 {
     private const string STORE_NAME = "올리브영 천호점";
-    private const int MAX_MENU_COUNT = 4;
+    private const int MAX_MENU_COUNT = 5;
     
     static void Main(string[] args)
     {
@@ -15,6 +15,8 @@ class Program
         MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 10000, ItemCategory.마스크팩, basicPromotion);
         BodyLotion bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, basicPromotion);
         SunCream sunCream = new SunCream(4, "셀퓨전씨 선크림 SPF+++", 13000, ItemCategory.스킨케어, basicPromotion);
+        Shampoo shampoo = new Shampoo(5, "탈모 방지 남성용 헤어샴푸", 30000, ItemCategory.헤어케어, basicPromotion);
+        
         
         List<Item> itemList = new List<Item>();
         
@@ -22,6 +24,7 @@ class Program
         itemList.Add(maskPack2);
         itemList.Add(bodyLotion);
         itemList.Add(sunCream);
+        itemList.Add(shampoo);
         
         bool isStoreOpen = true;
         
