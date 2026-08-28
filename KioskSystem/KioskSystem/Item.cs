@@ -14,15 +14,15 @@ public abstract class Item
     public ItemCategory ItemCategory => _itemCategory;
     public int Price => _price;
     public Promotion Promotion => _promotion;
-    public int Count => _count;
+    public int Count { get; set; }
     
-    public Item(int id, string name, int price, ItemCategory itemCategory, Promotion promotion, int count = 0)
+    public Item(int id, string name, int price, ItemCategory itemCategory, Promotion promotion)
     {
         _id = id;
         _name = name;
         _price = price;
         _itemCategory = itemCategory;
         _promotion = promotion;
-        _count = count;
+        _count = 0;
     }
 }
