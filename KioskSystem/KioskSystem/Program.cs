@@ -13,7 +13,7 @@ class Program
     
     static void Main(string[] args)
     {
-        BasicPromotion basicPromotion = new BasicPromotion("기본할인", "3개 이상 10% 할인");
+        BasicPromotion basicPromotion = new BasicPromotion();
         
         MaskPack maskPack = new MaskPack(1, "메디힐", 1000, ItemCategory.마스크팩, basicPromotion);
         MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 10000, ItemCategory.마스크팩, basicPromotion);
