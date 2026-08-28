@@ -6,6 +6,8 @@ class Program
 {
     private const string STORE_NAME = "올리브영 천호점";
     private const int MAX_MENU_COUNT = 5;
+
+    static private int TOTAL_CART_PRICE = 0;
     
     static void Main(string[] args)
     {
@@ -47,6 +49,7 @@ class Program
                 case KioskMenu.결제:
                     // 합계 금액 출력, 받은 금액 묻기
                     PayShoppingCart();
+                    ClearShoppingCart(itemList);
                     break;
                 case KioskMenu.영업종료:
                     // 그날의 총 주문건수와 총 매출액 출력
@@ -73,11 +76,21 @@ class Program
         {
             item.Count = 0;
         }
+
+        TOTAL_CART_PRICE = 0;
     }
 
     static void PayShoppingCart()
     {
-        Console.WriteLine("결제");
+        if (TOTAL_CART_PRICE == 0)
+        {
+            Console.WriteLine($"결제할 항목이 없습니다.");
+            return;
+        }
+        Console.WriteLine($"합계 금액 :  {TOTAL_CART_PRICE}");
+        int inputMoney = ConsoleInput.ReadIntInRange("받은 금액 : ", TOTAL_CART_PRICE, Int32.MaxValue);
+        int returnMoney = inputMoney - TOTAL_CART_PRICE;
+        Console.WriteLine($"반환 금액 :  {returnMoney}");
     }
 
     static void CloseStore()
@@ -111,20 +124,20 @@ class Program
     static void PrintShoppingCart(List<Item> items)
     {
         bool hasItem = false;
-        int totalCartPrice = 0;
+        
         foreach (Item item in items)
         {
             if (item.Count != 0)
             {
                 hasItem = true;
                 Console.WriteLine($"{item.Name} x{item.Count}  {item.GetPromotionPrice()}");
-                totalCartPrice += item.GetPromotionPrice();
+                TOTAL_CART_PRICE += item.GetPromotionPrice();
             }
         }
 
         if (hasItem)
         {
-            Console.WriteLine($"합계 :  {totalCartPrice}원");
+            Console.WriteLine($"합계 :  {TOTAL_CART_PRICE}원");
         }
     }
 }
