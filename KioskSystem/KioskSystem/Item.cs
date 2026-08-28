@@ -14,8 +14,13 @@ public abstract class Item
     public ItemCategory ItemCategory => _itemCategory;
     public int Price => _price;
     public Promotion Promotion => _promotion;
-    public int Count { get; set; }
-    
+
+    public int Count
+    {
+        get => _count;
+        set => _count = value;
+    }
+
     public Item(int id, string name, int price, ItemCategory itemCategory, Promotion promotion)
     {
         _id = id;
@@ -25,4 +30,6 @@ public abstract class Item
         _promotion = promotion;
         _count = 0;
     }
+
+    public abstract int GetPromotionPrice();
 }
