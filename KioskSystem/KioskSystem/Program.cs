@@ -5,31 +5,34 @@ using KioskSystem;
 class Program
 {
     private const string STORE_NAME = "올리브영 천호점";
-    private const int MAX_MENU_COUNT = 5;
+    private const int MAX_MENU_COUNT = 6;
 
-    static private int totalCartPrice = 0;
-    static private int totalOderCount = 0;
-    static private int totalProfit = 0;
+    private static int totalCartPrice = 0;
+    private static int totalOderCount = 0;
+    private static int totalProfit = 0;
     
     static void Main(string[] args)
     {
         BasicPromotion basicPromotion = new();
         BigSalePromotion bigSalePromotion = new();
+        EmptyPromotion emptyPromotion = new();
+        PlusPromotion plusPromotion = new();
         
-        MaskPack maskPack = new MaskPack(1, "메디힐", 1000, ItemCategory.마스크팩, basicPromotion);
-        MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 8000, ItemCategory.마스크팩, basicPromotion);
+        MaskPack maskPack = new MaskPack(1, "메디힐 콜라겐 마스크 팩", 3000, ItemCategory.마스크팩, basicPromotion);
+        MaskPack maskPackSet = new MaskPack(2, "메디힐 풀에너지 10개", 8000, ItemCategory.마스크팩, emptyPromotion);
         BodyLotion bodyLotion = new BodyLotion(3, "밀크바디", 3500, ItemCategory.바디케어, bigSalePromotion);
         SunCream sunCream = new SunCream(4, "셀퓨전씨 선크림 SPF+++", 13000, ItemCategory.스킨케어, basicPromotion);
-        Shampoo shampoo = new Shampoo(5, "탈모 방지 남성용 헤어샴푸", 30000, ItemCategory.헤어케어, basicPromotion);
-        
+        Shampoo shampoo = new Shampoo(5, "탈모 방지 남성용 헤어샴푸", 30000, ItemCategory.헤어케어, plusPromotion);
+        Cleansing cleansing = new Cleansing(6, "아크네스 포밍 클렌져 2개", 13000, ItemCategory.클렌징, emptyPromotion);
         
         List<Item> itemList = new List<Item>();
         
         itemList.Add(maskPack);
-        itemList.Add(maskPack2);
+        itemList.Add(maskPackSet);
         itemList.Add(bodyLotion);
         itemList.Add(sunCream);
         itemList.Add(shampoo);
+        itemList.Add(cleansing);
         
         bool isStoreOpen = true;
         

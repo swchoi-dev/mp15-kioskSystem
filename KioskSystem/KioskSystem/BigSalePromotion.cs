@@ -13,7 +13,6 @@ public class BigSalePromotion : Promotion
 
     public override int Price(int price, int count)
     {
-        Console.WriteLine($"{price} / {count}");
         int result = price * count;
         if (count < DISCOUNT_CONDITION)
         {
@@ -21,7 +20,6 @@ public class BigSalePromotion : Promotion
         }
 
         result = (price - DISCOUNT_AMOUNT) * count;
-        Console.WriteLine($"result");
         return result;
     }
 }
