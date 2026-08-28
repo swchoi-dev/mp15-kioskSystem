@@ -73,10 +73,4 @@ class Program
         Console.WriteLine("------------------------------------");
         Console.WriteLine("1. 담기   2. 전체 비우기   3. 결제   4. 영업 종료");
     }
-    public enum KioskMenu{
-        담기 = 1,
-        전체비우기,
-        결제,
-        영업종료
-    };
 }
