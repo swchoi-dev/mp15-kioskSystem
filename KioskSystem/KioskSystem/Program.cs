@@ -14,22 +14,22 @@ class Program
 
             PrintKioskMain();
             
-            int userInput = ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
-            switch (userInput)
+            KioskMenu picked = (KioskMenu)ConsoleInput.ReadIntInRange("번호 : ", 1, 4);
+            switch (picked)
             {
-                case 1:
+                case KioskMenu.담기:
                     // 메뉴번호와 수량을 묻기
                     OrderItem();
                     break;
-                case 2:
+                case KioskMenu.전체비우기:
                     // 장바구니 통째로 비우기
                     ClearShoppingCart();
                     break;
-                case 3:
+                case KioskMenu.결제:
                     // 합계 금액 출력, 받은 금액 묻기
                     PayShoppingCart();
                     break;
-                case 4:
+                case KioskMenu.영업종료:
                     // 그날의 총 주문건수와 총 매출액 출력
                     isStoreOpen = false;
                     CloseStore();
@@ -73,4 +73,10 @@ class Program
         Console.WriteLine("------------------------------------");
         Console.WriteLine("1. 담기   2. 전체 비우기   3. 결제   4. 영업 종료");
     }
+    public enum KioskMenu{
+        담기 = 1,
+        전체비우기,
+        결제,
+        영업종료
+    };
 }
