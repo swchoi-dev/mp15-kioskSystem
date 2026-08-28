@@ -6,5 +6,4 @@ public class MaskPack : Item
         base(id, name, price, itemCategory, promotion)
     {
     }
-    
 }

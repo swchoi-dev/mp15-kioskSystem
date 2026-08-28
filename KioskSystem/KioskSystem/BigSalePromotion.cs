@@ -4,7 +4,7 @@ public class BigSalePromotion : Promotion
 {
     private const int DISCOUNT_AMOUNT = 1000;
     private const int DISCOUNT_CONDITION = 10;
-    
+
     public BigSalePromotion()
     {
         _name = "빅 세일 프로모션";
@@ -13,11 +13,8 @@ public class BigSalePromotion : Promotion
 
     public override int Price(int price, int count)
     {
-        int result = price * count;
-        if (count < DISCOUNT_CONDITION)
-        {
-            return result ;
-        }
+        var result = price * count;
+        if (count < DISCOUNT_CONDITION) return result;
 
         result = (price - DISCOUNT_AMOUNT) * count;
         return result;

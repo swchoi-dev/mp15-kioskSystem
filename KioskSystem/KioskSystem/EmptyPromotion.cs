@@ -7,9 +7,10 @@ public class EmptyPromotion : Promotion
         _name = "프로모션 없음";
         _description = "정가";
     }
+
     public override int Price(int price, int count)
     {
-        int result = price * count;
+        var result = price * count;
         return result;
     }
 }
