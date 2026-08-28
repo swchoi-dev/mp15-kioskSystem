@@ -11,8 +11,8 @@ class Program
     {
         BasicPromotion basicPromotion = new BasicPromotion("기본할인", "3개 이상 10% 할인");
         
-        MaskPack maskPack = new MaskPack(1, "메디힐", 10000, ItemCategory.마스크팩, basicPromotion);
-        MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지", 20000, ItemCategory.마스크팩, basicPromotion);
+        MaskPack maskPack = new MaskPack(1, "메디힐", 1000, ItemCategory.마스크팩, basicPromotion);
+        MaskPack maskPack2 = new MaskPack(2, "메디힐 풀에너지 10개 입", 10000, ItemCategory.마스크팩, basicPromotion);
         
         List<Item> itemList = new List<Item>();
         
@@ -54,7 +54,7 @@ class Program
 
     static void OrderItem(List<Item> items)
     {
-        int picked = ConsoleInput.ReadIntInRange("담을 번호 : ", 1, 4);
+        int picked = ConsoleInput.ReadIntInRange("담을 번호 : ", 1, MAX_MENU_COUNT);
         int amount = ConsoleInput.ReadIntInRange("개수 : ", 1, 10);
 
         items[picked-1].Count += amount;
@@ -104,20 +104,20 @@ class Program
     static void PrintShoppingCart(List<Item> items)
     {
         bool hasItem = false;
-        int totalPrice = 0;
+        int totalCartPrice = 0;
         foreach (Item item in items)
         {
             if (item.Count != 0)
             {
                 hasItem = true;
-                totalPrice += item.Count * item.Price;
-                Console.WriteLine($"{item.Name} x{item.Count}  {totalPrice}");
+                Console.WriteLine($"{item.Name} x{item.Count}  {item.GetPromotionPrice()}");
+                totalCartPrice += item.GetPromotionPrice();
             }
         }
 
         if (hasItem)
         {
-            Console.WriteLine($"합계 :  {totalPrice}원");
+            Console.WriteLine($"합계 :  {totalCartPrice}원");
         }
     }
 }

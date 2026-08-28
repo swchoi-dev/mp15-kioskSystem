@@ -14,5 +14,5 @@ public abstract class Promotion
         _description = description;
     }
 
-    public abstract int PromotionPrice(int price, int count);
+    public abstract int Price(int price, int count);
 }
